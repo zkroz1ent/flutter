@@ -11,33 +11,34 @@ void main() => runApp(const MyApp());
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  static const String _title = 'Flutter Code Sample';
-
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: _title,
-      home: MyStatelessWidget(),
-    );
+    return const MaterialApp(home: MoodyGradient());
   }
 }
 
-class MyStatelessWidget extends StatelessWidget {
-  const MyStatelessWidget({Key? key}) : super(key: key);
+class MoodyGradient extends StatelessWidget {
+  const MoodyGradient({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end:
-              Alignment(0.8, 0.0), // 10% of the width, so there are ten blinds.
-          colors: <Color>[
-            Color(0xffee0000),
-            Color(0xffeeee00)
-          ], // red to yellow
-          tileMode: TileMode.repeated, // repeats the gradient over the canvas
+    return Material(
+      child: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.centerLeft,
+            end: Alignment.centerRight,
+            colors: <Color>[
+              Color(0xff2c3e50),
+              Color(0xff3498db)
+            ], // gradient from https://uigradients.com/#BetweenNightandDay
+          ),
+        ),
+        child: const Center(
+          child: Text(
+            'Between Night and Day',
+            style: TextStyle(fontSize: 18.0, color: Colors.white),
+          ),
         ),
       ),
     );
